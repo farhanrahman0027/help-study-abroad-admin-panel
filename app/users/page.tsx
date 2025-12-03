@@ -102,52 +102,57 @@ export default function UsersPage() {
           </Box>
         ) : (
           <>
-            <TableContainer component={Paper}>
+            <TableContainer component={Paper} sx={{ overflowX: "auto" }}>
               <Table>
                 <TableHead>
                   <TableRow sx={{ backgroundColor: "#f5f5f5" }}>
-                    <TableCell>
-                      <strong>Name</strong>
-                    </TableCell>
-                    <TableCell>
-                      <strong>Email</strong>
-                    </TableCell>
-                    <TableCell>
-                      <strong>Gender</strong>
-                    </TableCell>
-                    <TableCell>
-                      <strong>Phone</strong>
-                    </TableCell>
-                    <TableCell>
-                      <strong>Company</strong>
-                    </TableCell>
-                    <TableCell align="center">
-                      <strong>Action</strong>
-                    </TableCell>
+                        <TableCell sx={{ minWidth: 160 }}>
+                          <strong>Name</strong>
+                        </TableCell>
+                        <TableCell sx={{ display: { xs: "none", sm: "table-cell" }, minWidth: 200 }}>
+                          <strong>Email</strong>
+                        </TableCell>
+                        <TableCell sx={{ display: { xs: "none", md: "table-cell" } }}>
+                          <strong>Gender</strong>
+                        </TableCell>
+                        <TableCell sx={{ display: { xs: "none", md: "table-cell" } }}>
+                          <strong>Phone</strong>
+                        </TableCell>
+                        <TableCell sx={{ display: { xs: "none", lg: "table-cell" } }}>
+                          <strong>Company</strong>
+                        </TableCell>
+                        <TableCell align="center" sx={{ minWidth: 80 }}>
+                          <strong>Action</strong>
+                        </TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {users.map((user) => (
                     <TableRow key={user.id} hover>
-                      <TableCell>{`${user.firstName} ${user.lastName}`}</TableCell>
-                      <TableCell>{user.email}</TableCell>
-                      <TableCell>{user.gender}</TableCell>
-                      <TableCell>{user.phone}</TableCell>
-                      <TableCell>{user.company.name}</TableCell>
-                      <TableCell align="center">
-                        <Link href={`/users/${user.id}`}>
-                          <Box
-                            component="span"
-                            sx={{
-                              color: "primary.main",
-                              cursor: "pointer",
-                              "&:hover": { textDecoration: "underline" },
-                            }}
-                          >
-                            View
-                          </Box>
-                        </Link>
-                      </TableCell>
+                          <TableCell>
+                            {`${user.firstName} ${user.lastName}`}
+                            <Box sx={{ display: { xs: "block", sm: "none" }, color: "text.secondary", fontSize: "0.85rem" }}>
+                              {user.email}
+                            </Box>
+                          </TableCell>
+                          <TableCell sx={{ display: { xs: "none", sm: "table-cell" } }}>{user.email}</TableCell>
+                          <TableCell sx={{ display: { xs: "none", md: "table-cell" } }}>{user.gender}</TableCell>
+                          <TableCell sx={{ display: { xs: "none", md: "table-cell" } }}>{user.phone}</TableCell>
+                          <TableCell sx={{ display: { xs: "none", lg: "table-cell" } }}>{user.company.name}</TableCell>
+                          <TableCell align="center">
+                            <Link href={`/users/${user.id}`}>
+                              <Box
+                                component="span"
+                                sx={{
+                                  color: "primary.main",
+                                  cursor: "pointer",
+                                  "&:hover": { textDecoration: "underline" },
+                                }}
+                              >
+                                View
+                              </Box>
+                            </Link>
+                          </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>

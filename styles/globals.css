@@ -123,3 +123,20 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Responsive helpers */
+html, body, #__next {
+  height: 100%;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Ensure MUI Container has comfortable horizontal padding on small screens */
+.MuiContainer-root {
+  padding-left: 16px;
+  padding-right: 16px;
+}
