@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 14, "column": 0}, "map": {"version":3,"sources":["file:///D:/Normal%20projects/HelpStudyAbroad/app/login/page.tsx"],"sourcesContent":["import LoginForm from \"@/components/LoginForm\"\n\nexport default function LoginPage() {\n  return (\n    <div\n      style={{\n        minHeight: \"100vh\",\n        display: \"flex\",\n        justifyContent: \"center\",\n        alignItems: \"center\",\n        backgroundColor: \"#f5f5f5\",\n        padding: \"20px\",\n      }}\n    >\n      <LoginForm />\n    </div>\n  )\n}\n"],"names":[],"mappings":";;;;;;;;;;;;AAEe,SAAS;IACtB,qBACE,8OAAC;QACC,OAAO;YACL,WAAW;YACX,SAAS;YACT,gBAAgB;YAChB,YAAY;YACZ,iBAAiB;YACjB,SAAS;QACX;kBAEA,cAAA,8OAAC;;;;;;;;;;AAGP"}}]
+}

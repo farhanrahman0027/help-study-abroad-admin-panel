@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///D:/Normal%20projects/HelpStudyAbroad/app/providers.tsx"],"sourcesContent":["\"use client\"\n\nimport { SessionProvider } from \"next-auth/react\"\nimport { CssBaseline, ThemeProvider, createTheme } from \"@mui/material\"\nimport type { ReactNode } from \"react\"\n\nconst theme = createTheme({\n  palette: {\n    mode: \"light\",\n    primary: {\n      main: \"#1976d2\",\n    },\n    secondary: {\n      main: \"#dc004e\",\n    },\n  },\n})\n\nexport default function Provider({ children }: { children: ReactNode }) {\n  return (\n    <SessionProvider>\n      <ThemeProvider theme={theme}>\n        <CssBaseline />\n        {children}\n      </ThemeProvider>\n    </SessionProvider>\n  )\n}\n"],"names":[],"mappings":";;;;;AAEA;AACA;AAAA;AAAA;AAHA;;;;AAMA,MAAM,QAAQ,IAAA,6NAAW,EAAC;IACxB,SAAS;QACP,MAAM;QACN,SAAS;YACP,MAAM;QACR;QACA,WAAW;YACT,MAAM;QACR;IACF;AACF;AAEe,SAAS,SAAS,EAAE,QAAQ,EAA2B;IACpE,qBACE,6LAAC,oKAAe;kBACd,cAAA,6LAAC,mOAAa;YAAC,OAAO;;8BACpB,6LAAC,kOAAW;;;;;gBACX;;;;;;;;;;;;AAIT;KATwB"}}]
+}
