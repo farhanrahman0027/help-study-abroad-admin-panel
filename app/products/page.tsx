@@ -14,6 +14,8 @@ import {
   CircularProgress,
   Alert,
   Pagination,
+  Chip,
+  Stack,
   Select,
   MenuItem,
   FormControl,
@@ -39,6 +41,7 @@ export default function ProductsPage() {
     error,
     total,
   } = useProductsStore()
+
   const [currentPage, setCurrentPage] = useState(1)
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("")
@@ -49,12 +52,10 @@ export default function ProductsPage() {
     }
   }, [status, router])
 
-  // Fetch categories on mount
   useEffect(() => {
     fetchCategories()
   }, [fetchCategories])
 
-  // Fetch products when page, search, or category changes
   useEffect(() => {
     setCurrentPage(1)
     if (searchQuery.trim()) {
@@ -68,7 +69,6 @@ export default function ProductsPage() {
     }
   }, [searchQuery, selectedCategory])
 
-  // Fetch products on page change
   useEffect(() => {
     if (!searchQuery && !selectedCategory) {
       const skip = (currentPage - 1) * ITEMS_PER_PAGE
@@ -76,7 +76,6 @@ export default function ProductsPage() {
     }
   }, [currentPage, searchQuery, selectedCategory, fetchProducts])
 
-  // useCallback for search handler
   const handleSearch = useCallback(
     (query: string) => {
       setSearchQuery(query)
@@ -89,14 +88,12 @@ export default function ProductsPage() {
     [searchProducts],
   )
 
-  // useCallback for category filter
   const handleCategoryChange = useCallback((category: string) => {
     setSelectedCategory(category)
     setSearchQuery("")
     setCurrentPage(1)
   }, [])
 
-  // useMemo to calculate total pages
   const totalPages = useMemo(() => {
     return Math.ceil(total / ITEMS_PER_PAGE)
   }, [total])
@@ -114,7 +111,6 @@ export default function ProductsPage() {
   return (
     <DashboardLayout>
       <Box sx={{ p: 3 }}>
-        {/* Filters */}
         <Grid container spacing={2} sx={{ mb: 3 }}>
           <Grid item xs={12} sm={6}>
             <TextField
@@ -125,6 +121,7 @@ export default function ProductsPage() {
               disabled={isLoading}
             />
           </Grid>
+
           <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
               <InputLabel>Category</InputLabel>
@@ -135,6 +132,7 @@ export default function ProductsPage() {
                 disabled={isLoading}
               >
                 <MenuItem value="">All Categories</MenuItem>
+
                 {categories.map((cat) => {
                   const catValue = typeof cat === "string" ? cat : cat.slug
                   const catLabel = typeof cat === "string" ? cat : cat.name
@@ -161,63 +159,69 @@ export default function ProductsPage() {
           </Box>
         ) : (
           <>
+            {/* PRODUCT GRID */}
             <Grid container spacing={2} sx={{ mb: 3 }}>
               {products.map((product) => (
                 <Grid item xs={12} sm={6} md={4} lg={3} key={product.id}>
-                  <Link href={`/products/${product.id}`}>
+                  <Link href={`/products/${product.id}`} style={{ textDecoration: "none" }}>
                     <Card
                       sx={{
                         height: "100%",
+                        display: "flex",
+                        flexDirection: "column",
                         cursor: "pointer",
-                        transition: "transform 0.2s, box-shadow 0.2s",
+                        transition: "transform 0.18s ease, box-shadow 0.18s ease",
+                        borderRadius: 2,
+                        overflow: "hidden",
                         "&:hover": {
-                          transform: "translateY(-4px)",
-                          boxShadow: 3,
+                          transform: "translateY(-6px)",
+                          boxShadow: 6,
                         },
                       }}
                     >
                       <CardMedia
                         component="img"
-                        height="200"
-                        image={product.images[0] || "/diverse-products-still-life.png"}
+                        image={product.images?.[0] || "/diverse-products-still-life.png"}
                         alt={product.title}
-                        sx={{ objectFit: "cover" }}
+                        sx={{
+                          width: "100%",
+                          height: 160,
+                          objectFit: "cover",
+                          backgroundColor: "rgba(0,0,0,0.04)",
+                        }}
                       />
-                      <CardContent>
-                        <Typography
-                          variant="subtitle2"
-                          fontWeight="bold"
-                          sx={{
-                            mb: 1,
-                            display: "-webkit-box",
-                            WebkitLineClamp: 2,
-                            WebkitBoxOrient: "vertical",
-                            overflow: "hidden",
-                          }}
-                        >
-                          {product.title}
-                        </Typography>
-                        <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                          <Typography variant="h6" fontWeight="bold" color="primary">
-                            ${product.price}
-                          </Typography>
-                          <Box
+
+                      <CardContent sx={{ p: 2, pb: 1, flexGrow: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                        <Box>
+                          <Typography
+                            variant="subtitle1"
+                            fontWeight={700}
                             sx={{
-                              backgroundColor: "success.light",
-                              color: "success.main",
-                              px: 1,
-                              py: 0.5,
-                              borderRadius: 1,
-                              fontSize: "0.75rem",
-                              fontWeight: "bold",
+                              mb: 0.5,
+                              display: "-webkit-box",
+                              WebkitLineClamp: 2,
+                              WebkitBoxOrient: "vertical",
+                              overflow: "hidden",
                             }}
                           >
-                            ⭐ {product.rating}
-                          </Box>
+                            {product.title}
+                          </Typography>
+
+                          <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                            {product.description?.slice(0, 80)}{product.description && product.description.length > 80 ? "..." : ""}
+                          </Typography>
                         </Box>
-                        <Typography variant="caption" color="textSecondary" sx={{ mt: 1, display: "block" }}>
-                          {product.category}
-                        </Typography>
+
+                        <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ mt: 1 }}>
+                          <Typography variant="h6" color="primary" fontWeight={800} sx={{ letterSpacing: "0.2px" }}>
+                            ${product.price}
+                          </Typography>
+
+                          <Stack direction="row" spacing={1} alignItems="center">
+                            <Chip label={`⭐ ${product.rating}`} size="small" color="success" sx={{ fontWeight: 700 }} />
+                            <Chip label={product.category} size="small" variant="outlined" />
+                          </Stack>
+                        </Stack>
                       </CardContent>
                     </Card>
                   </Link>

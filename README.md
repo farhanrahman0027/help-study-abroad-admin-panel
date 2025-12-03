@@ -2,6 +2,26 @@
 
 A modern, responsive Next.js admin dashboard built with Material-UI, Zustand for state management, and NextAuth for authentication. The application fetches data from the public DummyJSON API.
 
+
+## 📸 Screenshots
+
+
+### 🔹 **Dashboard Overview**
+<p align="center">
+  <img src="public/screenshots/overview.png" width="80%" />
+</p>
+
+### 🔹 **Users List**
+<p align="center">
+  <img src="public/screenshots/users.png" width="80%" />
+</p>
+
+### 🔹 **Product Details**
+<p align="center">
+  <img src="public/screenshots/product-details.png" width="80%" />
+</p>
+
+---
 ## Features
 
 - ✅ **Secure Authentication**: NextAuth with DummyJSON API integration

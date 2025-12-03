@@ -288,3 +288,71 @@ Import trace:
     ./auth.config.ts
     ./auth.ts
     ./app/dashboard/page.tsx
+[13:23:46.678] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/users color: rgb(120, 120, 120) color: inherit {"dp":"/users","o":"http://localhost:3000/users","sdkn":"@vercel/analytics/next","sdkv":"1.6.0","sv":"0.1.3","ts":1764746105689}
+[13:24:06.174] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/products color: rgb(120, 120, 120) color: inherit {"dp":"/products","o":"http://localhost:3000/products","sdkn":"@vercel/analytics/next","sdkv":"1.6.0","sv":"0.1.3","ts":1764746125171}
+[13:29:04.986] Server  LOG      ✓ Compiled in 411ms
+[13:29:17.031] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[13:29:17.340] Browser WARN    MUI Grid: The `item` prop has been removed and is no longer necessary. You can safely remove it.
+
+[13:29:17.340] Browser WARN    MUI Grid: The `xs` prop has been removed. See https://mui.com/material-ui/migration/upgrade-to-grid-v2/ for migration instructions.
+
+[13:29:17.340] Browser WARN    MUI Grid: The `sm` prop has been removed. See https://mui.com/material-ui/migration/upgrade-to-grid-v2/ for migration instructions.
+
+[13:29:18.510] Browser WARN    MUI Grid: The `md` prop has been removed. See https://mui.com/material-ui/migration/upgrade-to-grid-v2/ for migration instructions.
+
+[13:29:18.510] Browser WARN    MUI Grid: The `lg` prop has been removed. See https://mui.com/material-ui/migration/upgrade-to-grid-v2/ for migration instructions.
+
+[13:29:18.623] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[13:29:18.623] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/products","route":"/products"}
+[13:29:18.623] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/products color: rgb(120, 120, 120) color: inherit {"dp":"/products","o":"http://localhost:3000/products","sdkn":"@vercel/analytics/next","sdkv":"1.6.0","sv":"0.1.3","ts":1764746437661}
+[13:29:26.937] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[13:29:27.283] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <InnerScrollAndFocusHandler segmentPath={[...]} focusAndScrollRef={{apply:false, ...}}>
+      <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+        <LoadingBoundary name="products/" loading={null}>
+          <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+            <RedirectBoundary>
+              <RedirectErrorBoundary router={{...}}>
+                <InnerLayoutRouter url="/products" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
+                  <SegmentViewNode type="page" pagePath="products/p...">
+                    <SegmentTrieNode>
+                    <ClientPageRoot Component={function ProductsPage} serverProvidedParams={{...}}>
+                      <ProductsPage params={Promise} searchParams={Promise}>
+                        <DashboardLayout>
+                          <Box sx={{display:"flex", ...}}>
+                            <Styled(div) as="div" ref={null} className="MuiBox-root" theme={{...}} ...>
+                              <Insertion>
++                             <div className="MuiBox-root css-9ehaii">
+-                             <style data-emotion="css-global o6gwfi" data-s="">
+                  ...
+                ...
+      ...
+
+[13:29:27.283] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[13:29:27.283] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/products","route":"/products"}
+[13:29:27.283] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/products","route":"/products"}
+[13:29:27.283] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/products color: rgb(120, 120, 120) color: inherit {"dp":"/products","o":"http://localhost:3000/products","sdkn":"@vercel/analytics/next","sdkv":"1.6.0","sv":"0.1.3","ts":1764746446251}
+[13:29:27.283] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/products color: rgb(120, 120, 120) color: inherit {"dp":"/products","o":"http://localhost:3000/products","sdkn":"@vercel/analytics/next","sdkv":"1.6.0","sv":"0.1.3","ts":1764746446251}
+[13:29:27.283] Browser WARN    MUI Grid: The `item` prop has been removed and is no longer necessary. You can safely remove it.
+
+[13:29:27.283] Browser WARN    MUI Grid: The `xs` prop has been removed. See https://mui.com/material-ui/migration/upgrade-to-grid-v2/ for migration instructions.
+
+[13:29:27.283] Browser WARN    MUI Grid: The `sm` prop has been removed. See https://mui.com/material-ui/migration/upgrade-to-grid-v2/ for migration instructions.
+
+[13:29:27.816] Browser WARN    MUI Grid: The `md` prop has been removed. See https://mui.com/material-ui/migration/upgrade-to-grid-v2/ for migration instructions.
+
+[13:29:27.816] Browser WARN    MUI Grid: The `lg` prop has been removed. See https://mui.com/material-ui/migration/upgrade-to-grid-v2/ for migration instructions.
+
+[13:31:56.697] Server  LOG      ✓ Compiled in 1897ms
